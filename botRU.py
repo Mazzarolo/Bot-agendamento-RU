@@ -5,6 +5,7 @@ import pytesseract as ts
 import time
 from getInfo import *
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 from datetime import datetime, timedelta
@@ -12,7 +13,10 @@ from datetime import datetime, timedelta
 def delay ():
     time.sleep(0.5)
 
-driver = webdriver.Firefox()
+options = Options()
+options.add_argument("--headless")
+
+driver = webdriver.Firefox(options=options)
 
 baseLink = "https://portal.ufsm.br/ru/usuario/agendamento/form.html"
 
